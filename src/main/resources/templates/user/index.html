@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html layout:decorate="~{fragments/layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <head>
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <title>Cars</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link crossorigin="anonymous"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          rel="stylesheet">
+    <link crossorigin="anonymous"
+          href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+          rel="stylesheet">
+  </head>
+<body>
+
+<div layout:fragment="content" th:remove="tag">
+  <div class="container my-2">
+    <div class="card">
+      <div class="card-body">
+        <div class="container my-5" th:switch="${cars}">
+          <p class="my-5">
+            <a class="btn btn-primary" href="/signup"><i
+                class="fas fa-user-plus ml-2"> Add car </i></a>
+          </p>
+              <table class="table table-striped table-responsive-md">
+                <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>Mark</th>
+                  <th>Color</th>
+                  <th>Body type</th>
+                  <th>Price</th>
+                  <th>Year</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="car : ${cars}">
+                  <td th:text="${car.model}"></td>
+                  <td th:text="${car.mark}"></td>
+                  <td th:text="${car.color}"></td>
+                  <td th:text="${car.bodyType}"></td>
+                  <td th:text="${car.year}"></td>
+                  <td th:text="${car.price}"></td>
+                  <td><a class="btn btn-primary"
+                         th:href="@{/edit/{id}(id=${car.id})}"><i class="fas fa-user-edit ml-2"></i></a></td>
+                  <td><a
+                      class="btn btn-primary"
+                      th:href="@{/delete/{id}(id=${car.id})}"><i class="fas fa-user-times ml-2"></i></a></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
