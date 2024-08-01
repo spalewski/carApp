@@ -34,7 +34,7 @@
     <dependency>
       <artifactId>bootstrap</artifactId>
       <groupId>org.webjars</groupId>
-      <version>3.3.7</version>
+      <version>3.4.1</version>
     </dependency>
     <dependency>
       <artifactId>jquery</artifactId>
